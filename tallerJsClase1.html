@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taller de JS - Clase 1</title>
+</head>
+<body>
+
+    <h2>Ejercicio 1</h2>
+    <p>Crear un archivo que tenga extensión ".html" y dentro de ese archivo colocar un boton, 
+        que al presionarlo realice una operación matemática y lo muestre en pantalla. </p>
+    <button onclick="sumar2y2()">Clickeame para mostrar el resultado de 2+2</button>
+    <p id="sumaBasica"></p>
+
+    <h2>Ejercicio 2</h2>
+    <p>Crear un archivo que tenga extensión ".html" y dentro de ese archivo colocar un input de tipo texto y un input de tipo boton. 
+        Abrir el navegador y escribir algo en el input de tipo texto, al presionar el boton debe capturar el valor del input de 
+        tipo texto y mostrar el resultado. </p>
+    <input type="text" id="valor">
+    <br>
+    <button type="button" onclick="sumar2aX()">Clickeame para sumarle 2 a su valor</button>
+    <p id="sumar2aX"></p>
+</body>
+</html>
+<script type="text/javascript">
+    function sumar2y2(){
+        document.getElementById("sumaBasica").innerHTML = 2+2;
+    }
+    function sumar2aX(){
+        var input = parseInt(document.getElementById("valor").value);
+        document.getElementById("sumar2aX").innerHTML = input + 2;
+    }
+</script>   
