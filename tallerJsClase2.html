@@ -9,13 +9,19 @@
 <body>
     <p>Generar un archivo HTML, y dentro del mismo un formulario que contenga un boton, que al hacer click envie un request a 
         https://jsonplaceholder.typicode.com/todos/1 y el resultado lo coloque dentro de un input de tipo textarea.</p>
-    <button type="button" onclick="sumar2aX()">Clickeame para sumarle 2 a su valor</button>
-    <p id="sumar2aX"></p>
+    <br>
+    <p>Clickea el botón para mostrar el request en la text-area</p> 
+    <button type="button" onclick="recibirMensaje()">Recibir un request</button>
+    <br>
+    <textarea id="mensajeRecibido" cols="30" rows="3"></textarea>
+
 </body>
 </html>
+
 <script type="text/javascript">
-    function sumar2aX(){
-        var input = parseInt(document.getElementById("valor").value);
-        document.getElementById("sumar2aX").innerHTML = input + 2;
+    function recibirMensaje(){
+        fetch('https://jsonplaceholder.typicode.com/todos/1')
+            .then(response => response.json())
+            .then(data => document.getElementById("mensajeRecibido").innerHTML = JSON.stringify(data))
     }
 </script>   
