@@ -11,13 +11,15 @@ SELECT
     Empleados.cargoE AS cargo,
     Empleados.jefeId AS jefe,
     Empleados.salEmp AS salario,
-    Empleados.comisionE AS comision,
+    Empleados.comisionE AS comision
 FROM
-    Empleados -- 2. Listar el nombre de los departamentos.
+    Empleados; 
+-- 2. Listar el nombre de los departamentos.
 SELECT
     Departamentos.nombreDepto AS nombre_departamento
 FROM
-    Departamentos -- 3. Obtener el nombre y cargo de todos los empleados, ordenado por salario
+    Departamentos; 
+-- 3. Obtener el nombre y cargo de todos los empleados, ordenado por salario
 SELECT
     nomEmp AS nombre_empleado,
     cargoE AS cargo
@@ -84,14 +86,14 @@ WHERE
     AND nombreDepto = 'VENTAS';
 
 -- 9. Mostrar el salario más alto de la empresa.
-select
+SELECT
     Empleados.nomEmp AS nombre_empleado,
     MAX(Empleados.salEmp) AS salario_mas_alto
 FROM
     Empleados;
 
 -- 10. Hallar el salario más alto, el más bajo y la diferencia entre ellos.
-select
+SELECT
     MAX(Empleados.salEmp) AS salario_mas_alto,
     MIN(Empleados.salEmp) AS salario_mas_bajo,
     MAX(Empleados.salEmp) - MIN(Empleados.salEmp) AS diferencia
@@ -99,6 +101,7 @@ FROM
     Empleados;
 
 -- 11. Mostrar el número de empleados de sexo femenino y de sexo masculino, por departamento.
+
 -- 12. Hallar los departamentos que tienen más de tres empleados. Mostrar el número de empleados de
 -- esos departamentos.
 -- 13. Mostrar el código y nombre de cada jefe, junto al número de empleados que dirige. 
