@@ -1,14 +1,18 @@
-CREATE persistencia_clase1;
+CREATE DATABASE persistencia_clase1;
+
 -- Selección de la base de datos
 USE persistencia_clase1;
+
 -- Creación de las tablas
-CREATE TABLE departamentos(
+CREATE TABLE Departamentos(
     codDpto VARCHAR(4) NOT NULL,
     nombreDepto VARCHAR(20),
     ciudad VARCHAR(15),
     codDirector VARCHAR(12),
     PRIMARY KEY(codDpto)
-); CREATE TABLE empleados(
+);
+
+CREATE TABLE Empleados(
     ndiEMP VARCHAR(12) NOT NULL,
     nomEmp VARCHAR(30),
     sexEmp CHAR(1),
@@ -19,6 +23,6 @@ CREATE TABLE departamentos(
     cargoE VARCHAR(15),
     jefeID VARCHAR(12),
     codDepto VARCHAR(4),
-    PRIMARY KEY(`ndiEMP`),
-    FOREIGN KEY(codDepto) REFERENCES departamentos(codDpto)
+    PRIMARY KEY(ndiEMP),
+    FOREIGN KEY(codDepto) REFERENCES Departamentos(codDpto)
 );
