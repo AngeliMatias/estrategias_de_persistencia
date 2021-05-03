@@ -9,7 +9,7 @@ SELECT
     Empleados.fecIncorporacion AS fecha_incorporacion,
     Empleados.codDepto AS departamento,
     Empleados.cargoE AS cargo,
-    Empleados.jefeId AS jefe,
+    Empleados.jefeID AS jefe,
     Empleados.salEmp AS salario,
     Empleados.comisionE AS comision
 FROM
@@ -22,7 +22,8 @@ FROM
 -- 3. Obtener el nombre y cargo de todos los empleados, ordenado por salario
 SELECT
     nomEmp AS nombre_empleado,
-    cargoE AS cargo
+    cargoE AS cargo,
+    salEmp AS salario
 FROM
     Empleados
 ORDER BY
@@ -101,11 +102,39 @@ FROM
     Empleados;
 
 -- 11. Mostrar el número de empleados de sexo femenino y de sexo masculino, por departamento.
-
+SELECT 
+    nomEmp as nombre,
+    codDepto as departamento,
+    sexEmp as sexo, 
+    COUNT(*) as cantidad
+FROM Empleados, Departamentos
+WHERE Empleados.codDepto = Departamentos.codDpto
+GROUP BY Empleados.codDepto, sexEmp;
 -- 12. Hallar los departamentos que tienen más de tres empleados. Mostrar el número de empleados de
 -- esos departamentos.
+SELECT Departamentos.nombreDepto as departamento, COUNT(*) as cantidad
+FROM Departamentos, Empleados
+WHERE Departamentos.codDpto = Empleados.codDepto
+GROUP BY nombreDepto
+HAVING COUNT(*) > 3;
 -- 13. Mostrar el código y nombre de cada jefe, junto al número de empleados que dirige. 
 -- Solo los que tengan más de dos empleados (2 incluido).
+SELECT Empleados.jefeID as ID_jefe, Empleados.nomEmp as nombre_jefe
+FROM Empleados, Departamentos
+WHERE Empleados.ndiEMP = Empleados.jefeID
+GROUP BY Empleados.jefeID
+HAVING COUNT(*) >= 2;
 -- 14. Hallar los departamentos que no tienen empleados
+SELECT Departamentos.nombreDepto as departamento, COUNT(*) as cantidad
+FROM Departamentos, Empleados
+WHERE Departamentos.codDpto = Empleados.codDepto
+GROUP BY nombreDepto
+HAVING COUNT(*) = 0;
 -- 15. Mostrar el nombre del departamento cuya suma de salarios sea la más alta, indicando el valor 
 -- de la suma
+SELECT Departamentos.nombreDepto as nombre, SUM(Empleados.salEmp) as total_salario
+FROM Departamentos, Empleados
+WHERE Departamentos.codDpto = Empleados.codDepto
+GROUP BY Departamentos.nombreDepto
+ORDER BY total_salario DESC
+LIMIT 1;
