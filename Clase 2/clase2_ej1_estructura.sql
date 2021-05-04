@@ -1,7 +1,7 @@
-CREATE DATABASE persistencia_clase2;
+CREATE DATABASE persistencia_ej1_clase2;
 
 -- Selección de la base de datos
-USE persistencia_clase2;
+USE persistencia_ej1_clase2;
 
 -- Creación de las tablas
 CREATE TABLE Fabricantes(
